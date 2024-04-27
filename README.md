@@ -23,6 +23,7 @@ $ make test
 ## Implementation
 
 https://github.com/aircall/technical-test-pager
+Aircall Technical Test - Aircall Pager
 
 ### Flow diagram for a Page Service
 
@@ -72,17 +73,18 @@ Each [use_cases](app/application/use_cases) triggers a [domain Service](app/doma
     * `Ack`
     * `Timeout`
     * `Healthy`
-      The `outcoming ports` are injected as dependencies.
+
+The `outcoming ports` are injected as dependencies.
 
 #### Communication
 
 The communication between services (Pager, Web Console, Escalation Policy, Alerting, Mail, SMS and Timer) suggests a
 microservices' architecture.
 
-The implementation is designed to be scalable and responsive by using
-an [Event Sourcing pattern](https://martinfowler.com/eaaDev/EventSourcing.html).
-Event Sourcing ensures every change to the state of an application is stored in an event object in the sequence they
-were applied.
+The implementation is designed to use [Event Sourcing pattern](https://martinfowler.com/eaaDev/EventSourcing.html).
+Event Sourcing ensures every change to the state of an application is stored in an event in the sequence they
+were applied.  It allows to get the of `events` and `alerts` for a given timeframe of the system. 
+Reducing triage time in case of debugging errors.
 
 ## Future implementation on components (adapters)
 
@@ -101,7 +103,7 @@ were applied.
 
 ## Future improvements in scalability
 
-Evaluate:
+See [0003-why-to-use-event-sourcing-eda-cqrs.md](doc%2Fadr%2F0003-why-to-use-event-sourcing-eda-cqrs.md)
 
 - **Event-Driven Architecture** (EDA) focus on decoupling offering a scalable and responsive approach for managing
   alerts and notifications in our system.
